@@ -1,22 +1,33 @@
 import React, { useState } from "react";
 import "./Form.css";
+
 const Form = () => {
-  // const formClickHandler = (event) =>{
-  //   console.log("form clicked", event)
-  // }
   const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+
   const titleChangeHandler = (event) => {
-    console.log(event.target.value);
+    setTitle(event.target.value);
   };
+
+  const textChangeHandler = (event) => {
+    setText(event.target.value);
+  };
+
+  const submitFormHandler = (event) => {
+    event.preventDefault();
+    setTitle("");
+    setText("");
+  };
+
   return (
     <div>
-      <div className="form-container inactive-form">
+      {/*<div className="form-container inactive-form">
         <form>
           <input
             onChange={(event) => console.log(event.target.value)}
             type="text"
             className="note-text"
-            placeholder="Tak"
+            placeholder="Takenotes"
           />
           <div className="form-actions">
             <div className="tooltip">
@@ -33,17 +44,21 @@ const Form = () => {
             </div>
           </div>
         </form>
-      </div>
+  </div>*/}
 
       <div className="form-container active-form">
-        <form className="form" id="form">
+        <form onSubmit={submitFormHandler} className="form" id="form">
           <input
+            onChange={titleChangeHandler}
+            value={title}
             id="note-title"
             type="text"
             className="note-title"
             placeholder="Title"
           />
           <input
+            onChange={textChangeHandler}
+            value={text}
             id="note-text"
             className="note-text"
             type="text"
