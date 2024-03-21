@@ -1,24 +1,25 @@
 import "./Notes.css";
 import Note from "./Note";
 
-export default function Notes(props) {
+const Notes = (props) => {
+  const { notes, deleteNote, toggleModal, setSelectedNote } = props;
   return (
-    <div class="notes">
-      <Note
-        id={props.notes[0].id}
-        title={props.notes[0].title}
-        text={props.notes[0].text}
-      />
-      <Note
-        id={props.notes[1].id}
-        title={props.notes[1].title}
-        text={props.notes[1].text}
-      />
-      <Note
-        id={props.notes[2].id}
-        title={props.notes[2].title}
-        text={props.notes[2].text}
-      />
+    <div className="notes">
+      {notes.length === 0 ? (
+        <p>Notes you add appear here.</p>
+      ) : (
+        notes.map((note, index) => (
+          <Note
+            key={index}
+            note={note}
+            deleteNote={deleteNote}
+            toggleModal={toggleModal}
+            setSelectedNote={setSelectedNote}
+          />
+        ))
+      )}
     </div>
   );
-}
+};
+
+export default Notes;
