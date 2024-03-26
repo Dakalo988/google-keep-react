@@ -15,6 +15,9 @@ const Note = (props) => {
   const hoverOutHandler = () => {
     setIsHover(false);
   };
+  const archiveNoteHandler = () => {
+    props.archiveNote(props.id);
+  };
   const deleteHandler = () => props.deleteNote(note.id);
   return (
     <div

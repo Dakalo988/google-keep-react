@@ -2,7 +2,8 @@ import "./Notes.css";
 import Note from "./Note";
 
 const Notes = (props) => {
-  const { notes, deleteNote, toggleModal, setSelectedNote } = props;
+  const { notes, archiveNote, deleteNote, toggleModal, setSelectedNote } =
+    props;
   return (
     <div className="notes">
       {notes.length === 0 ? (
@@ -12,6 +13,7 @@ const Notes = (props) => {
           <Note
             key={index}
             note={note}
+            archiveNote={archiveNote}
             deleteNote={deleteNote}
             toggleModal={toggleModal}
             setSelectedNote={setSelectedNote}

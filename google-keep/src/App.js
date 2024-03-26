@@ -41,6 +41,11 @@ const App = () => {
       return !prevState;
     });
   };
+  const archiveNote = (id) => {
+    setNotes((prevNotes) => {
+      return prevNotes.filter((note) => id !== note.id);
+    });
+  };
 
   return (
     <div>
@@ -49,6 +54,7 @@ const App = () => {
       <Form addNote={addNote} />
       <Notes
         notes={notes}
+        archiveNote={archiveNote}
         deleteNote={deleteNote}
         toggleModal={toggleModal}
         setSelectedNote={setSelectedNote}
